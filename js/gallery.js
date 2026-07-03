@@ -83,9 +83,10 @@ gallery.insertAdjacentHTML("afterbegin", markup);
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
 
-  if (event.target.tagName !== "IMG") return;
+  const img = event.target.closest("img");
+  if (!img) return;
 
-  const largeImageUrl = event.target.dataset.source;
+  const largeImageUrl = img.dataset.source;
 
   basicLightbox.create(`
     <img src="${largeImageUrl}">
